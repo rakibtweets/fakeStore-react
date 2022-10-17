@@ -1,11 +1,11 @@
-# Install React Eslint Tailwind Template
+# Fake Shop Web Application
 
-Setting up This Template in a Create React App project has been done is this repository.
+To use this repository you need to follow these steps below
 
 Step 1: Clone this repository
 
 ```sh
-git clone https://github.com/rakibtweets/react-eslint-tailwind.git
+git clone https://github.com/rakibtweets/fakeStore-react.git
 
 ```
 
