@@ -2,8 +2,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../HOC/useAuth';
 
 function MainNavigation() {
+  const { user } = useAuth();
   return (
     <div className="navbar  bg-neutral lg:px-8 text-neutral-content">
       <div className="navbar-start ">
@@ -21,7 +23,11 @@ function MainNavigation() {
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           <li><Link to="/product" className=" text-ghost normal-case">Products</Link></li>
-          <li><a className=" text-ghost normal-case">Item 3</a></li>
+
+          {
+          !user.email ? <li><Link to="/login" className=" text-ghost normal-case">Login</Link></li>
+          : <li><Link to="/#" className=" text-ghost normal-case">{user?.email}</Link></li>
+          }
         </ul>
       </div>
 
