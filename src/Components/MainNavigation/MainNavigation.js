@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../HOC/useAuth';
 
 function MainNavigation() {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   return (
     <div className="navbar  bg-neutral lg:px-8 text-neutral-content">
       <div className="navbar-start ">
@@ -27,6 +27,10 @@ function MainNavigation() {
           {
           !user.email ? <li><Link to="/login" className=" text-ghost normal-case">Login</Link></li>
           : <li><Link to="/#" className=" text-ghost normal-case">{user?.email}</Link></li>
+          }
+          {
+            user.email && <li><button onClick={() => logOut()} type="button" className=" text-ghost hover:bg-primary normal-case">Log out</button></li>
+
           }
         </ul>
       </div>
