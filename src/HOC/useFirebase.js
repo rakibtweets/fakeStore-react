@@ -10,17 +10,18 @@ const useFirebase = () => {
   const [loggedUser, setUser] = useState({});
   const [authError, setAuthError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
-  const signWithGoogle = () => {
+  const signWithGoogle = (location, navigate) => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
-      .then((result) => {
+    .then((result) => {
         const { user } = result;
-        console.log('.then ~ user', user);
         setUser(user);
+        const redirectUrl = location?.state?.from?.pathname || '/';
+        navigate(redirectUrl, { replace: true });
+        console.log('.then ~ redirectUrl', redirectUrl);
         setAuthError('');
       })
       .catch((error) => {
@@ -31,16 +32,17 @@ const useFirebase = () => {
 
   // watching user behavior
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        setIsLoading(false);
       } else {
         // if user logged out
         setUser({});
       }
     });
 
-    return () => unsubscribe;
+    return () => unSubscribe();
   }, [auth]);
 
   const logOut = () => {

@@ -69,7 +69,7 @@ function ProductDetails() {
       {error
       && <h1 className="text-center text-red-600 font-bold">{error}</h1>}
       {
-    isLoading && <h2 className="text-center mt-6 text-red-500 font-bold">Loading...</h2>
+    isLoading && <h2 className="text-center mt-6 text-red-500 font-bold">Product Loading...</h2>
       }
       {!error && !isLoading && (
       <div>

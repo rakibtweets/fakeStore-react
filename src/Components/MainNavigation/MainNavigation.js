@@ -1,11 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../HOC/useAuth';
 
 function MainNavigation() {
   const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logOut();
+    navigate('/');
+  };
   return (
     <div className="navbar  bg-neutral lg:px-8 text-neutral-content">
       <div className="navbar-start ">
@@ -29,7 +34,7 @@ function MainNavigation() {
           : <li><Link to="/#" className=" text-ghost normal-case">{user?.email}</Link></li>
           }
           {
-            user.email && <li><button onClick={() => logOut()} type="button" className=" text-ghost hover:bg-primary normal-case">Log out</button></li>
+            user.email && <li><button onClick={() => handleLogout()} type="button" className=" text-ghost hover:bg-primary normal-case">Log out</button></li>
 
           }
         </ul>

@@ -13,7 +13,6 @@ function Products() {
         const data = await getProduct();
         setProducts(data);
       } catch (err) {
-        console.log(err);
         setError(err.message);
         setProducts([]);
       }

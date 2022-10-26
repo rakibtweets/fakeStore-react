@@ -1,14 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useFirebase from '../../HOC/useFirebase';
 
 function Login() {
     const { signWithGoogle } = useFirebase();
     const navigate = useNavigate();
-
+    const location = useLocation();
+    console.log('Login ~ location', location);
     const handleGoogleLogin = () => {
-      signWithGoogle();
-      navigate('/');
+     signWithGoogle(location, navigate);
     };
 
   return (
