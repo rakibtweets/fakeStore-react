@@ -16,6 +16,8 @@
     "no-console": 0,
     "react/prop-types": 0,
     "comma-dangle": 0,
-    "react/jsx-no-useless-fragment": 0
+    "react/jsx-no-useless-fragment": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "indent": 1
   }
 }

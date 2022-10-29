@@ -6,7 +6,9 @@ import {
 import './App.css';
 import Products from './Components/Products/Products';
 import RootLayout from './Components/RootLayout/RootLayout';
+import Login from './Pages/Login/Login';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
+import Register from './Pages/Register/Register';
 import WelcomePage from './Pages/Welcome/Welcome';
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -14,6 +16,8 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route index element={<WelcomePage />} />
     <Route path="/product" element={<Products />} />
     <Route path="/product/:id" element={<ProductDetails />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/register" element={<Register />} />
   </Route>,
 ));
 

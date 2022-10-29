@@ -1,9 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 function MainNavigation() {
+  const {
+    loginWithRedirect, logout, isAuthenticated, user
+  } = useAuth0();
+
+  const logoutWithRedirect = () => logout({
+    returnTo: window.location.origin,
+  });
   return (
     <div className="navbar  bg-neutral lg:px-8 text-neutral-content">
       <div className="navbar-start ">
@@ -21,7 +29,36 @@ function MainNavigation() {
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           <li><Link to="/product" className=" text-ghost normal-case">Products</Link></li>
-          <li><a className=" text-ghost normal-case">Item 3</a></li>
+          <li className=" text-ghost normal-case my-auto text-green-500">{user?.email}</li>
+
+          {
+            !isAuthenticated
+              ? (
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => loginWithRedirect()}
+                    className=" text-ghost bg-green-600 normal-case"
+                  >
+                    Login
+                  </button>
+
+                </li>
+              )
+              : (
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => logoutWithRedirect()}
+                    className=" text-ghost bg-red-600 normal-case ml-2"
+                  >
+                    Logout
+                  </button>
+
+                </li>
+              )
+}
+
         </ul>
       </div>
 
