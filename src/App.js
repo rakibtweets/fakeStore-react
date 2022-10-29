@@ -16,14 +16,12 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route index element={<WelcomePage />} />
     <Route path="/product" element={<Products />} />
     <Route path="/login" element={<Login />} />
-    <Route
-      path="/product/:id"
-      element={(
-        <PrivateRoute>
-          <ProductDetails />
-        </PrivateRoute>
-)}
-    />
+    <Route element={<PrivateRoute />}>
+      <Route
+        path="/product/:id"
+        element={<ProductDetails />}
+      />
+    </Route>
   </Route>,
 ));
 

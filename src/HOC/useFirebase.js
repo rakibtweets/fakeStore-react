@@ -17,12 +17,11 @@ const useFirebase = () => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
     .then((result) => {
+        const cameFrom = location?.state?.from?.pathname || '/';
         const { user } = result;
+        navigate(cameFrom, { replace: true });
         setUser(user);
-        const redirectUrl = location?.state?.from?.pathname || '/';
-        navigate(redirectUrl, { replace: true });
-        console.log('.then ~ redirectUrl', redirectUrl);
-        setAuthError('');
+        console.log('.then ~ redirectUrl', cameFrom);
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -35,11 +34,12 @@ const useFirebase = () => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        setIsLoading(false);
+        setIsLoading(true);
       } else {
         // if user logged out
         setUser({});
       }
+      setIsLoading(false);
     });
 
     return () => unSubscribe();

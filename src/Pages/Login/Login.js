@@ -8,7 +8,7 @@ function Login() {
     const location = useLocation();
     console.log('Login ~ location', location);
     const handleGoogleLogin = () => {
-     signWithGoogle(location, navigate);
+      signWithGoogle(location, navigate);
     };
 
   return (

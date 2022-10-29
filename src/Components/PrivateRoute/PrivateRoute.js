@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import {
-  Navigate, useLocation
+  Navigate, Outlet, useLocation
 } from 'react-router-dom';
 import useAuth from '../../HOC/useAuth';
 
-function PrivateRoute({ children }) {
+function PrivateRoute() {
     const { user, isLoading } = useAuth();
     console.log('PrivateRoute ~ isLoading', isLoading);
     console.log('PrivateRoute ~ user', user.email);
@@ -18,11 +18,10 @@ function PrivateRoute({ children }) {
           </h4>
         );
       }
-
-   if (!user.email) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-   }
-   return children;
+  //  if (!user.email) {
+  //   return <Navigate to="/login" state={{ from: location }} replace />;
+  //  }
+   return user.email ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />;
 }
 
 export default PrivateRoute;

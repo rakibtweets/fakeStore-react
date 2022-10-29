@@ -39,6 +39,7 @@ function ProductDetails() {
   const { id } = useParams();
 
   const [{ error, product, isLoading }, dispatch] = useReducer(reducer, initialState);
+
   useEffect(() => {
     async function loadProductDetails() {
       dispatch({ type: 'request' });
