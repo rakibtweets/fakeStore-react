@@ -5,8 +5,7 @@ function WelcomePage() {
   const {
     user, isAuthenticated, isLoading, error
   } = useAuth0();
-  console.log('WelcomePage ~ error', error);
-  console.log('WelcomePage ~ isAuthenticated', isAuthenticated);
+
   console.log('WelcomePage ~ user', user);
 
   if (error) {

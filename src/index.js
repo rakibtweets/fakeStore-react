@@ -1,20 +1,16 @@
-import { Auth0Provider } from '@auth0/auth0-react';
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import AuthProviderWithHistory from './Components/AuthProviderWithHistory/AuthProviderWithHistory';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Auth0Provider
-    domain="dev-lwfiihcgy8ub1adj.us.auth0.com"
-    clientId="JZsd9JSqM91iBKzHFkKAlG1KAqPPOSMh"
-    redirectUri={window.location.origin}
-    useRefreshTokens
-    cacheLocation="localstorage"
-  >
+  <AuthProviderWithHistory>
     <App />
-  </Auth0Provider>
+  </AuthProviderWithHistory>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
