@@ -24,7 +24,7 @@ function Products() {
 
   return (
     <>
-      <h1 className="text-center font-bold my-16 text-green-600 text-2xl md:text-4xl">
+      <h1 className="text-center font-bold my-4 text-green-600 text-2xl md:text-4xl">
         All Products
       </h1>
       {error

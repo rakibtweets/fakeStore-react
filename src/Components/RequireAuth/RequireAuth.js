@@ -1,21 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { withAuthenticationRequired } from '@auth0/auth0-react';
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 function RequireAuth({ children }) {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const Component = withAuthenticationRequired(children, {
-    returnTo: () => navigate(location?.state?.from?.pathname || '/')
-    // onRedirecting: () => 'Loading---'
-
-  });
-  console.log('RequireAuth ~ Component', Component);
-  return <Component />;
+  return children;
 }
 
-export default RequireAuth;
+export default withAuthenticationRequired(RequireAuth, {
+  returnTo: () => window.location.hash.substr(1),
+  onRedirecting: () => 'Loading---'
+});
 
 // <Route
 //   component={withAuthenticationRequired(children, {
