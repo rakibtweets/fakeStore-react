@@ -6,8 +6,6 @@ function WelcomePage() {
     user, isAuthenticated, isLoading, error
   } = useAuth0();
 
-  console.log('WelcomePage ~ user', user);
-
   if (error) {
     return (
       <h1 className="text-center font-bold text-red-600">

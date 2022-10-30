@@ -1,15 +1,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import AuthProviderWithHistory from './Components/AuthProviderWithHistory/AuthProviderWithHistory';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AuthProviderWithHistory>
-    <App />
-  </AuthProviderWithHistory>
+  <BrowserRouter>
+    <AuthProviderWithHistory>
+      <App />
+    </AuthProviderWithHistory>
+  </BrowserRouter>
 
 );
 
