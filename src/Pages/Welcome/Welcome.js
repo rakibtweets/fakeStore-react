@@ -5,6 +5,7 @@ function WelcomePage() {
   const {
     user, isAuthenticated, isLoading, error
   } = useAuth0();
+  console.log('WelcomePage ~ user', user);
 
   if (error) {
     return (
@@ -34,7 +35,7 @@ function WelcomePage() {
               {' '}
               {user.nickname}
             </h1>
-            <img className="rounded-full" src={user.picture} alt="" />
+            <img className="rounded-full w-[50px]" src={user?.picture} alt="" />
 
           </div>
         )
